@@ -63,8 +63,8 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/users", (req, res) => {
-    db.User.findOne({ deviceId: req.body.deviceId })
+  app.get("/api/users/:deviceId", (req, res) => {
+    db.User.findOne(req.params.deviceId)
       .then((userData) => {
         res.json(userData);
       })
