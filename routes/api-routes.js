@@ -64,7 +64,8 @@ module.exports = function (app) {
   });
 
   app.get("/api/users/:deviceId", (req, res) => {
-    db.User.findOne(req.params.deviceId)
+    console.log(req.params);
+    db.User.findOne({ deviceId: req.params.deviceId })
       .then((userData) => {
         res.json(userData);
       })
