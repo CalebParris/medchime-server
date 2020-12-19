@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = function (app) {
   app.post("/api/users", (req, res) => {
-    db.User.create({ deviceId: req.body.deviceId })
+    db.User.create({ deviceId: req.params.deviceId })
       .then((userData) => {
         res.json(userData);
       })
