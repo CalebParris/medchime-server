@@ -39,7 +39,7 @@ To view the license information, visit the link [here](https://github.com/CalebP
 
 ## Tests
 
-To test the app, follow the directions from the Installation and Usage sections first. After that, you can use MedChime readme [here](https://github.com/CalebParris/medchime) to fully test out all the features.
+To test the app, follow the directions from the Installation and Usage sections first. After that, you can use the MedChime readme [here](https://github.com/CalebParris/medchime) to fully test out all the features of the app, or you can use Postman to test the api routes.
 
 ## Questions
 
