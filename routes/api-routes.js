@@ -71,24 +71,19 @@ module.exports = function (app) {
   });
 
   app.get("/api/medications", (req, res) => {
-    // db.User.findOne({ deviceId: req.body.deviceId })
-    //   .then((userData) => {
     db.Medication.find({})
       .then((medData) => {
         res.json(medData);
       })
-      // })
       .catch((err) => {
         res.json(err);
       });
   });
 
   app.get("/api/appointments", (req, res) => {
-    db.User.findOne({ deviceId: req.body.deviceId })
-      .then((userData) => {
-        db.Appointment.find({ user: userData._id }).then((appointData) => {
-          res.json(appointData);
-        });
+    db.Appointment.find({})
+      .then((appointData) => {
+        res.json(appointData);
       })
       .catch((err) => {
         res.json(err);
