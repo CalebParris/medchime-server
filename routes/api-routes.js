@@ -73,7 +73,7 @@ module.exports = function (app) {
   app.get("/api/medications", (req, res) => {
     // db.User.findOne({ deviceId: req.body.deviceId })
     //   .then((userData) => {
-    db.Medication.find({ deviceId: req.params.deviceId })
+    db.Medication.find({ deviceId: req.body.deviceId })
       .then((medData) => {
         res.json(medData);
       })
