@@ -59,16 +59,16 @@ module.exports = function (app) {
       });
   });
 
-  // app.get("/api/users/:deviceId", (req, res) => {
-  //   console.log(req.params);
-  //   db.User.findOne({ deviceId: req.params.deviceId })
-  //     .then((userData) => {
-  //       res.json(userData);
-  //     })
-  //     .catch((err) => {
-  //       res.json(err);
-  //     });
-  // });
+  app.get("/api/users/:deviceId", (req, res) => {
+    console.log(req.params);
+    db.User.findOne({ deviceId: req.params.deviceId })
+      .then((userData) => {
+        res.json(userData);
+      })
+      .catch((err) => {
+        res.json(err);
+      });
+  });
 
   app.get("/api/medications", (req, res) => {
     // db.User.findOne({ deviceId: req.body.deviceId })
