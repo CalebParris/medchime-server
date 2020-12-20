@@ -20,7 +20,7 @@ module.exports = function (app) {
           user: req.body.user,
         }).then((medData) => {
           db.User.findByIdAndUpdate(
-            { _id: medData.user },
+            { _id: userData._id },
             {
               $push: {
                 medications: medData._id,
