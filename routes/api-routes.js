@@ -12,7 +12,7 @@ module.exports = function (app) {
   });
 
   app.post("/api/medications/:deviceId", (req, res) => {
-    db.User.findOne({ deviceId: req.params.deviceId })
+    db.User.findOne(req.params.deviceId)
       .then((userData) => {
         db.Medication.create({
           name: req.body.name,
