@@ -9,7 +9,10 @@ const MecicationSchema = new Schema({
   instructions: {
     type: String,
   },
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  // user: { type: Schema.Types.ObjectId, ref: "User" },
+  deviceId: {
+    type: String,
+  },
 });
 
 const Medication = mongoose.model("Medication", MecicationSchema);
