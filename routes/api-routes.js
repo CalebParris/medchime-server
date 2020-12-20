@@ -17,11 +17,11 @@ module.exports = function (app) {
     db.Medication.create({
       name: req.body.name,
       instructions: req.body.instructions,
-      user: req.body.user,
+      deviceId: req.body.deviceId,
     })
       .then((medData) => {
         db.User.findOneAndUpdate(
-          { deviceId: medData.user },
+          { deviceId: medData.deviceId },
           {
             $push: {
               medications: medData._id,
