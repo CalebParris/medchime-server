@@ -9,7 +9,6 @@ const MecicationSchema = new Schema({
   instructions: {
     type: String,
   },
-  // user: { type: Schema.Types.ObjectId, ref: "User" },
   deviceId: {
     type: String,
   },

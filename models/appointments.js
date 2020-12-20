@@ -15,7 +15,9 @@ const AppointmentSchema = new Schema({
   location: {
     type: String,
   },
-  user: { type: Schema.Types.ObjectId, ref: "User" },
+  deviceId: {
+    type: String,
+  },
 });
 
 const Appointment = mongoose.model("Appointment", AppointmentSchema);

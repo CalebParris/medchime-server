@@ -12,8 +12,6 @@ module.exports = function (app) {
   });
 
   app.post("/api/medications", (req, res) => {
-    // db.User.findOne(req.params.deviceId)
-    // .then((userData) => {
     db.Medication.create({
       name: req.body.name,
       instructions: req.body.instructions,
@@ -31,32 +29,29 @@ module.exports = function (app) {
           res.json(medData);
         });
       })
-      // })
       .catch((err) => {
         res.json(err);
       });
   });
 
   app.post("/api/appointments", (req, res) => {
-    db.User.findOne({ deviceId: req.body.deviceId })
-      .then((userData) => {
-        db.Appointment.create({
-          date: req.body.date,
-          time: req.body.time,
-          doctor: req.body.doctor,
-          location: req.body.location,
-          user: userData._id,
-        }).then((appointData) => {
-          db.User.findByIdAndUpdate(
-            { _id: userData._id },
-            {
-              $push: {
-                appointments: appointData._id,
-              },
-            }
-          ).then(() => {
-            res.json(appointData);
-          });
+    db.Appointment.create({
+      date: req.body.date,
+      time: req.body.time,
+      doctor: req.body.doctor,
+      location: req.body.location,
+      deviceId: req.body.deviceId,
+    })
+      .then((appointData) => {
+        db.User.findOneAndUpdate(
+          { deviceId: appointData.deviceId },
+          {
+            $push: {
+              appointments: appointData._id,
+            },
+          }
+        ).then(() => {
+          res.json(appointData);
         });
       })
       .catch((err) => {
