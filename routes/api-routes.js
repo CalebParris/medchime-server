@@ -11,26 +11,27 @@ module.exports = function (app) {
       });
   });
 
-  app.post("/api/medications/:deviceId", (req, res) => {
-    db.User.findOne(req.params.deviceId)
-      .then((userData) => {
-        db.Medication.create({
-          name: req.body.name,
-          instructions: req.body.instructions,
-          user: req.body.user,
-        }).then((medData) => {
-          db.User.findByIdAndUpdate(
-            { _id: userData._id },
-            {
-              $push: {
-                medications: medData._id,
-              },
-            }
-          ).then(() => {
-            res.json(medData);
-          });
+  app.post("/api/medications", (req, res) => {
+    // db.User.findOne(req.params.deviceId)
+    // .then((userData) => {
+    db.Medication.create({
+      name: req.body.name,
+      instructions: req.body.instructions,
+      user: req.body.user,
+    })
+      .then((medData) => {
+        db.User.findByIdAndUpdate(
+          { _id: medData.user },
+          {
+            $push: {
+              medications: medData._id,
+            },
+          }
+        ).then(() => {
+          res.json(medData);
         });
       })
+      // })
       .catch((err) => {
         res.json(err);
       });
