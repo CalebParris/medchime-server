@@ -59,24 +59,25 @@ module.exports = function (app) {
       });
   });
 
-  app.get("/api/users/:deviceId", (req, res) => {
-    console.log(req.params);
-    db.User.findOne({ deviceId: req.params.deviceId })
-      .then((userData) => {
-        res.json(userData);
-      })
-      .catch((err) => {
-        res.json(err);
-      });
-  });
+  // app.get("/api/users/:deviceId", (req, res) => {
+  //   console.log(req.params);
+  //   db.User.findOne({ deviceId: req.params.deviceId })
+  //     .then((userData) => {
+  //       res.json(userData);
+  //     })
+  //     .catch((err) => {
+  //       res.json(err);
+  //     });
+  // });
 
   app.get("/api/medications", (req, res) => {
-    db.User.findOne({ deviceId: req.body.deviceId })
-      .then((userData) => {
-        db.Medication.find({ user: userData._id }).then((medData) => {
-          res.json(medData);
-        });
+    // db.User.findOne({ deviceId: req.body.deviceId })
+    //   .then((userData) => {
+    db.Medication.find({ deviceId: req.body.deviceId })
+      .then((medData) => {
+        res.json(medData);
       })
+      // })
       .catch((err) => {
         res.json(err);
       });
