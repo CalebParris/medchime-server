@@ -100,8 +100,8 @@ module.exports = function (app) {
       });
   });
 
-  app.delete("/api/medications/:id", (req, res) => {
-    db.Medication.findByIdAndDelete(req.params.id)
+  app.delete("/api/medications/:_id", (req, res) => {
+    db.Medication.findByIdAndDelete(req.params._id)
       .then((medData) => {
         res.json(medData);
       })
@@ -110,8 +110,8 @@ module.exports = function (app) {
       });
   });
 
-  app.delete("/api/appointments/:id", (req, res) => {
-    db.Appointment.findByIdAndDelete(req.params.id)
+  app.delete("/api/appointments/:_id", (req, res) => {
+    db.Appointment.findByIdAndDelete(req.params._id)
       .then((appointData) => {
         res.json(appointData);
       })
