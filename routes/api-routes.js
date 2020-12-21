@@ -101,7 +101,7 @@ module.exports = function (app) {
   });
 
   app.delete("/api/medications/:_id", (req, res) => {
-    db.Medication.findOneAndDelete(req.params._id)
+    db.Medication.findOneAndDelete({ _id: req.params._id })
       .then((medData) => {
         res.json(medData);
       })
@@ -111,7 +111,7 @@ module.exports = function (app) {
   });
 
   app.delete("/api/appointments/:_id", (req, res) => {
-    db.Appointment.findOneAndDelete(req.params._id)
+    db.Appointment.findOneAndDelete({ _id: req.params._id })
       .then((appointData) => {
         res.json(appointData);
       })
