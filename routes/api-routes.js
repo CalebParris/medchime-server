@@ -18,17 +18,17 @@ module.exports = function (app) {
       deviceId: req.body.deviceId,
     })
       .then((medData) => {
-        db.User.findOneAndUpdate(
-          { deviceId: medData.deviceId },
-          {
-            $push: {
-              medications: medData._id,
-            },
-          }
-        ).then(() => {
-          res.json(medData);
-        });
+        // db.User.findOneAndUpdate(
+        //   { deviceId: medData.deviceId },
+        //   {
+        //     $push: {
+        //       medications: medData._id,
+        //     },
+        //   }
+        // ).then(() => {
+        res.json(medData);
       })
+      // })
       .catch((err) => {
         res.json(err);
       });
@@ -43,17 +43,17 @@ module.exports = function (app) {
       deviceId: req.body.deviceId,
     })
       .then((appointData) => {
-        db.User.findOneAndUpdate(
-          { deviceId: appointData.deviceId },
-          {
-            $push: {
-              appointments: appointData._id,
-            },
-          }
-        ).then(() => {
-          res.json(appointData);
-        });
+        // db.User.findOneAndUpdate(
+        //   { deviceId: appointData.deviceId },
+        //   {
+        //     $push: {
+        //       appointments: appointData._id,
+        //     },
+        //   }
+        // ).then(() => {
+        res.json(appointData);
       })
+      // })
       .catch((err) => {
         res.json(err);
       });
