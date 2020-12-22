@@ -72,11 +72,14 @@ module.exports = function (app) {
       });
   });
 
-  app.put("/api/medications/:id", (req, res) => {
-    db.Medication.findByIdAndUpdate(req.params.id, {
-      name: req.body.name,
-      instructions: req.body.instructions,
-    })
+  app.put("/api/medications/:_id", (req, res) => {
+    db.Medication.findOneAndUpdate(
+      { _id: req.params._id },
+      {
+        name: req.body.name,
+        instructions: req.body.instructions,
+      }
+    )
       .then((medData) => {
         res.json(medData);
       })
@@ -85,13 +88,16 @@ module.exports = function (app) {
       });
   });
 
-  app.put("/api/appointments/:id", (req, res) => {
-    db.Appointment.findByIdAndUpdate(req.params.id, {
-      date: req.body.date,
-      time: req.body.time,
-      doctor: req.body.doctor,
-      location: req.body.location,
-    })
+  app.put("/api/appointments/:_id", (req, res) => {
+    db.Appointment.findOneAndUpdate(
+      { _id: req.params._id },
+      {
+        date: req.body.date,
+        time: req.body.time,
+        doctor: req.body.doctor,
+        location: req.body.location,
+      }
+    )
       .then((appointData) => {
         res.json(appointData);
       })
